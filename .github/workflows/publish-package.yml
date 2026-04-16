@@ -55,6 +55,6 @@ jobs:
 
       - name: Publish Library
         env:
-          GITHUB_ACTOR: ${{ github.actor }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gradle publish -PprojectVersion=${{ steps.version.outputs.version }} --no-daemon
+          GITHUB_ACTOR: ${{ secrets.PACKAGES_USERNAME || github.actor }}
+          GITHUB_TOKEN: ${{ secrets.PACKAGES_TOKEN || secrets.GITHUB_TOKEN }}
+        run: gradle publish -PprojectVersion=${{ steps.version.outputs.version }} --no-daemon --stacktrace

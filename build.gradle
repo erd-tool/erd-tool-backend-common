@@ -52,6 +52,14 @@ publishing {
         gpr(MavenPublication) {
             from components.java
             artifactId = 'backend-common'
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
 
             pom {
                 name = 'backend-common'
